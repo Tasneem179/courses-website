@@ -1,12 +1,35 @@
 import logo from './logo.svg';
+import 'bootstrap/dist/css/bootstrap.min.css';
+import './assests/style.css'
+import './assests/images/Logo.png'
+import Header from './Components/Header';
 import './App.css';
 
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
+     {/* Header (top banner / nav bar) */}
+     <Header/>
+     {/* Hero Section */}
+     {/* Benefits Section */}
+     {/* Courses Section */}
+     {/* Testimonials Section */}
+     {/* Pricing Section */}
+     {/* FAQ Section */}
+     {/* footer */}
+
+
+    </div>
+  );
+}
+
+export default App;
+
+
+/*
+ <header className="App-header">
         <img src={logo} className="App-logo" alt="logo" />
-        <p>
+        <p className="text-primary">
           TASneem hassan mohamed  said<code>src/App.js</code> and save to reload.
         </p>
         <a
@@ -23,9 +46,4 @@ function App() {
         <p>
           Edit <code>src/App.js</code> and save to reload.
         </p>
-      </header>
-    </div>
-  );
-}
-
-export default App;
+      </header> */

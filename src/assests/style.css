@@ -1,0 +1,272 @@
+body{
+    background-color: #F7F7F8;
+}
+
+#top-banner{
+    background-color: #FF9500;
+    margin: 2px auto;
+
+}
+@font-face {
+    font-family: vetnam;
+    src: url(./fonts/BeVietnamPro-Regular.ttf);
+  }
+@font-face {
+    font-family: vetnam-bold;
+    src: url(./fonts/BeVietnamPro-Bold.ttf);
+  }
+
+#top-banner-text{
+    font-family: vetnam;
+    color: #FFFF;
+    display: inline-block;
+    margin: 0 4px;
+}
+
+.Loginbtn                    
+{
+    background-color: #FF9500;
+    font-weight: lighter;
+    font-family: vetnam;
+    color: white;
+}
+
+.navColor{
+    background: #F1F1F3 !important;
+    border-bottom: 1px solid #F1F1F3 ;
+   
+}
+
+
+
+
+.navbar-light .navbar-nav .nav-item .nav-link {
+
+    color: #262626;
+    font-family: vetnam;
+  
+  }
+ 
+
+.protext-bold
+ {
+     font-family:vetnam-bold;
+  }
+
+  .rounded-xl {
+    border-radius: 0.75rem;
+ }
+
+.protext{
+ color: #262626;
+ font-family: vetnam;
+
+}
+
+
+
+
+.icon-orange{
+    color: #FF9500;
+}
+
+.btn-border{
+    background-color: #FCFCFD;
+    border: 1px solid #F1F1F3 ;
+}
+
+.divcard{
+    background-color: #FFFFFF;
+    border: 1px solid #F1F1F3 ;
+    display: inline-block;
+    padding: 5px;
+    border-radius: 5px;
+    color: #4C4C4D;
+    font-family: vetnam;
+    width: fit-content;
+    margin-left: auto;
+    margin-bottom: 10px;
+
+}
+
+.protext-cards{
+    color: #4C4C4D;
+    font-family: vetnam;
+   
+   }
+
+.btn-cards{
+    background-color: #F7F7F8;
+    border: 1px solid #F1F1F3 ;
+}
+
+.card-border{
+    background-color: #FFFFFF;
+    border: 1px solid #F1F1F3 ;
+}
+
+
+
+
+
+
+
+
+.active, .btn:focus {
+    background-color: #FF9500;
+    font-weight: lighter;
+    font-family: vetnam;
+
+    border-radius: 5px;
+  }
+
+
+.pricingheader{
+    border: 1px solid #FFEACC;
+    background-color: #FFF9F0;
+    text-align: center;
+    border-radius: 0.25rem;
+    margin-bottom: 20px;
+    height: 45px;
+    line-height: 45px;
+  }
+
+.divList{
+    background-color: #FFFFFF;
+    border: 1px solid #F1F1F3 ;
+    display: flex;
+    padding: 10px 5px;
+  
+    border-radius: 0.5rem;
+    justify-content:flex-start;
+    align-items: center;
+
+}
+
+
+.includedDiv{
+    background-color: #fff4e5;
+    text-align: center;
+    width: fit-content;
+   margin-right: 15px;
+   padding: 100px auto;
+   border-radius: 0.2rem;
+  
+}
+
+li{
+    list-style-type: none;
+}
+
+
+
+
+
+hr {
+    display: block;
+    height: 1px;
+    border: 0;
+    border-top: 1px solid #ccc;
+    margin: 1em 0;
+    padding: 0;
+  }
+
+
+.link-footer {
+    text-decoration: none;
+    font-family: vetnam;
+    color: #59595A  ;
+}
+
+#home .card{
+    min-height: 382px;
+}
+
+.accordion-button {
+    color: #262626;
+    font-family: vetnam;
+ 
+}
+
+.accordion-button:not(.collapsed) {
+    color: #262626;
+    background-color: #FFFFFF;
+    font-family: vetnam;
+    border-bottom: 1px solid #F1F1F3;
+    box-shadow: none;
+
+    
+  
+   
+}
+
+
+.accordion-button::after{
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' fill='currentColor' class='bi bi-plus' viewBox='0 0 16 16'%3E%3Cpath d='M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4'/%3E%3C/svg%3E");
+    background-color: #fff4e5;
+    border-radius: 0.25rem;
+    height: 2rem;
+   width: 2rem;
+  background-size: cover;
+}
+
+
+
+.accordion-button:not(.collapsed)::after{
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' fill='currentColor' class='bi bi-x' viewBox='0 0 16 16'%3E%3Cpath d='M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708'/%3E%3C/svg%3E");
+    background-color: #fff4e5;
+    border-radius: 0.25rem;
+    height: 2rem;
+    width: 2rem;
+   
+
+}
+
+.border0Mob{
+    border-right: 1px solid #dee2e6
+
+}
+
+.accordion-body .fontmob {
+    font-size: 0.875em;
+}
+
+.p-mob-lap{
+    padding: 3rem;
+}
+
+.font-mob-lap{
+    font-size: 1rem;
+}
+
+
+@media only screen and (max-width: 767px) {
+    /* Styles for devices with a minimum width of 768 pixels */
+    
+    .p-mob-lap {
+        padding: 1rem ;
+    }
+    .border0Mob{
+        border-right: none ;
+
+    }
+
+    .accordion-button {
+      
+        font-size: 0.8rem;
+    }
+
+    .accordion-body .fontmob {
+        font-size: 0.6em;
+    }
+
+    .font-mob-lap{
+        font-size: 0.7rem;
+    }
+    
+  }
+
+
+
+ 
+
