@@ -3,6 +3,8 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import './assests/style.css'
 import './assests/images/Logo.png'
 import Header from './Components/Header';
+import Hero from './Components/Hero';
+import BenefitsSection from './Components/Benefits/BenefitsSection';
 import './App.css';
 
 function App() {
@@ -11,7 +13,9 @@ function App() {
      {/* Header (top banner / nav bar) */}
      <Header/>
      {/* Hero Section */}
+     <Hero/>
      {/* Benefits Section */}
+     <BenefitsSection/>
      {/* Courses Section */}
      {/* Testimonials Section */}
      {/* Pricing Section */}

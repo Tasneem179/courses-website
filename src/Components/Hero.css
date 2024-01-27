@@ -1,0 +1,19 @@
+.fit {
+  width: fit-content;
+}
+
+.box {
+  background-color: #fcfcfd;
+  border: 1px solid #f1f1f3;
+}
+
+.boxOrange {
+  background-color: #fff4e5;
+}
+
+.unlock {
+  color: #FF9500 ;
+}
+.creative {
+  color: #1A1A1A ;
+}

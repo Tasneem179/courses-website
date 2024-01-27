@@ -1,5 +1,7 @@
 body{
     background-color: #F7F7F8;
+    margin-right: 10px;
+ margin-left: 10px;
 }
 
 #top-banner{
@@ -40,7 +42,7 @@ body{
 
 
 
-.navbar-light .navbar-nav .nav-item .nav-link {
+.nav-link{
 
     color: #262626;
     font-family: vetnam;

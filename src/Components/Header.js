@@ -10,7 +10,7 @@ import {
   NavLink,
 } from "reactstrap";
 import * as Icon from "react-bootstrap-icons";
-
+import logo from "../assests/images/Logo.png"
 const Header = () => {
   const [isOpen, setIsOpen] = useState(false);
 
@@ -28,20 +28,18 @@ const Header = () => {
         {/* nav bar */}
 
         
-          <Navbar className="navbar-expand-lg navColor">
-            <Container>
-              <NavbarBrand href="/">
+          <Navbar className="navbar-expand-lg navColor px-lg-4 py-1">
+            
+              <NavbarBrand href="/" >
                 <img
-                  src="../assests/images/Logo.png"
-                  style={{ marginRight: "20px" }}
+                  src={logo}
+                 
                   alt="looooogo"
                 />
               </NavbarBrand>
-            
-
-            <div className="order-lg-1 d-flex ml-auto pr-2   ">
+             <div className="order-lg-1 d-flex ml-auto pr-2   ">
                 <Nav navbar className="flex-row" >
-                  <NavItem className="me-4">
+                  <NavItem className="me-1 me-md-3">
                     <NavLink href="#home">Sign Up</NavLink>
                   </NavItem>
 
@@ -54,9 +52,9 @@ const Header = () => {
                     </NavLink>
                   </NavItem>
                 </Nav>
-              </div>
+              </div> 
               <NavbarToggler onClick={toggle} />
-              <Collapse isOpen={isOpen} navbar>
+              <Collapse isOpen={isOpen} navbar className="text-start">
                 <Nav navbar>
                   <NavItem>
                     <NavLink href="#home">Home</NavLink>
@@ -79,11 +77,10 @@ const Header = () => {
                 </Nav>
            
               </Collapse>
-             
-
-              
-            </Container>
+            
           </Navbar>
+
+
         
       </header>
     </Container>
