@@ -20,7 +20,7 @@ const TestimonialsCard = (props) => {
           <div className="d-flex justify-content-between align-items-center">
             <div>
               <div className="d-inline-block me-3">
-                <img src= {props.testimonialImage} className="img-fluid testimonialColor" />
+                <img src= {props.testimonialImage} className="img-fluid titleColor" />
               </div>
               <div className="d-inline-block protext-bold">
               {props.testimonialName}

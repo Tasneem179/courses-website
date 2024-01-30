@@ -4,6 +4,7 @@ body{
  margin-left: 10px;
 }
 
+
 #top-banner{
     background-color: #FF9500;
     margin: 2px auto;
@@ -178,6 +179,7 @@ hr {
     text-decoration: none;
     font-family: vetnam;
     color: #59595A  ;
+ 
 }
 
 
@@ -237,6 +239,10 @@ hr {
 .font-mob-lap{
     font-size: 1rem;
 }
+.titleColor{
+
+    color: #333333;
+  }
 
 
 @media only screen and (max-width: 767px) {

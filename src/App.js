@@ -9,6 +9,8 @@ import './App.css';
 import TestimonialssSection from './Components/Testimonials/TestimonialsSection';
 import CoursesSection from './Components/Courses/CoursesSection';
 import Footer from './Components/Footer/Footer';
+import FAQ from './Components/FAQ/FAQ';
+import Prices from './Components/Prices/Prices';
 
 import img1 from './assests/images/card-Image1.png'
 import img2 from './assests/images/card-Image2.png'
@@ -107,7 +109,9 @@ function App() {
      <TestimonialssSection/>
 
      {/* Pricing Section */}
+     <Prices/>
      {/* FAQ Section */}
+     <FAQ/>
      
      {/* footer */}
      <Footer/>

@@ -53,6 +53,7 @@ const testimonials=[{
 
 const TestimonialssSection = () => {
   return (
+    <section id="Our Testimonials" className="mt-5">
     <div className="mt-5 text-start">
       <Container>
         <SectionDescription sectionName="Our Testimonials"/>
@@ -65,6 +66,7 @@ const TestimonialssSection = () => {
         </Row>
       </Container>
     </div>
+    </section>
   );
 };
 

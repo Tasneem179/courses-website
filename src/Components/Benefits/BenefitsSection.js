@@ -47,6 +47,7 @@ const benefits=[{
 
 const BenefitsSection = () => {
   return (
+    <section id="benefits" className="mt-5">
     <div className="mt-5 text-start">
       <Container>
         <SectionDescription sectionName="Benefits"/>
@@ -59,6 +60,7 @@ const BenefitsSection = () => {
         </Row>
       </Container>
     </div>
+    </section>
   );
 };
 

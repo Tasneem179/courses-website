@@ -14,7 +14,7 @@ import video_course from "../assests/images/video_course.mp4";
 import "./Hero.css";
 const Hero = () => {
   return (
-    <Container className=" text-center mx-auto">
+    <Container className=" text-center mx-auto"  id="Hero">
       <section id="home" className="mt-5">
         <div className="position-relative mx-auto fit  ">
           <img

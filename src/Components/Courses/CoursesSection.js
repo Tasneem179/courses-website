@@ -16,6 +16,7 @@ import CoursesCard from "./CoursesCard";
 
 const CoursesSection = (props) => {
   return (
+    <section id="courses" className="mt-5">
     <div className="mt-5 text-start">
       <Container>
         <SectionDescription sectionName="Our Courses" />
@@ -36,6 +37,7 @@ const CoursesSection = (props) => {
         </Row> 
       </Container>
     </div>
+    </section>
   );
 };
 

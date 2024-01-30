@@ -14,7 +14,8 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 const Footer = () => {
   return (
-    <footer id="web-footer" className="bg-white mt-5 ">
+  
+    <footer id="web-footer" className="bg-white mt-5  ">
       <div className="mt-5  pt-5 ">
         <Row className="justify-content-around">
           <Col md={4} className="mb-3">
@@ -36,10 +37,10 @@ const Footer = () => {
           </Col>
           <Col md={4} className="mb-3">
             <div className="mb-3 d-flex justify-content-between ">
-              <div className="me-3">
-                <p className="protext fw-bold">Home</p>
+              <div className="me-3 text-start ms-5">
+                <p className="protext fw-bold ">Home</p>
                 <p>
-                  <a href="#home" className="link-footer">
+                  <a href="#benefits" className="link-footer ">
                     Benefits
                   </a>
                 </p>
@@ -49,31 +50,31 @@ const Footer = () => {
                   </a>
                 </p>
                 <p>
-                  <a href="#Our Testimonials" className="link-footer">
+                  <a href="#Our Testimonials" className="link-footer ">
                     Our Testimonials
                   </a>
                 </p>
                 <p>
-                  <a href="#FAQ" className="link-footer">
+                  <a href="#FAQ" className="link-footer ">
                     Our FAQ
                   </a>
                 </p>
               </div>
 
-              <div className="me-3">
-                <p className="protext fw-bold">About Us</p>
+              <div className="me-3 text-start ms-5">
+                <p className="protext fw-bold ">About Us</p>
                 <p>
                   <a href="#!" className="link-footer">
                     Company
                   </a>
                 </p>
                 <p>
-                  <a href="#!" className="link-footer">
+                  <a href="#!" className="link-footer ">
                     Achievements
                   </a>
                 </p>
                 <p>
-                  <a href="#!" className="link-footer">
+                  <a href="#!" className="link-footer ">
                     Our Goals
                   </a>
                 </p>
@@ -81,8 +82,8 @@ const Footer = () => {
             </div>
           </Col>
           <Col md={3} className="mb-3">
-            <p className="protext fw-bold">Social Profiles</p>
-            <div className="d-flex ">
+            <p className="protext fw-bold text-start ms-5">Social Profiles</p>
+            <div className="d-flex ms-5">
               <span className="me-2">
                 <button className=" p-2 rounded btn-cards " href="#">
                   <FontAwesomeIcon icon={faFacebook} />
@@ -106,6 +107,7 @@ const Footer = () => {
         </div>
       </div>
     </footer>
+    
   );
 };
 
