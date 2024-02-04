@@ -1,0 +1,12 @@
+
+.Form{
+ min-height: 100vh;
+}
+.wrapperDashboard{
+    flex-grow: 1;
+}
+
+.addButton{
+    float: right;
+   height: fit-content;
+}

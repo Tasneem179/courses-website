@@ -10,14 +10,14 @@ import {
     Button
   } from "reactstrap";
  
-
+import './CoursesCard.css'
   
   const CoursesCard = (props) => {
     return (
       
-        <Card className="border-0 rounded mb-3 p-4">
+        <Card className="border-0 rounded mb-3 p-4 course-card">
             
-            <img alt="Sample" src={props.courseImage} />
+            <img alt="Sample" src={`data:image/jpeg;base64,${props.courseImage}`} className="rounded" />
            
        
         <CardBody>
