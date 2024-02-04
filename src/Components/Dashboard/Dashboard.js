@@ -282,7 +282,7 @@ async function editCourseHandler(course_id,course_obj)
          </Table>
         )}
       
-        {isLoading && <p>Loding.....</p>}
+        {isLoading && <div className="text-center m-5 p-5"><h1 className="text-center m-5">Loding.....</h1></div>}
        
       </div>
       <Footer />
