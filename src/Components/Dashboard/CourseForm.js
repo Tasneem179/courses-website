@@ -9,6 +9,7 @@ const CourseForm = (props) => {
     const [course_level, setLevel] = useState("");
     const [course_duration, setDuration] = useState("");
     const [course_img, setImage] = useState("");
+    const [img_found, setImageFound] = useState(false);
   
     useEffect(() => {
       // Set initial values if editing
@@ -19,7 +20,7 @@ const CourseForm = (props) => {
           description,
           level,
           duration,
-          img,
+          image,
         } = props.courseToEdit;
   
         setName(name || "");
@@ -27,13 +28,15 @@ const CourseForm = (props) => {
         setDescription(description || "");
         setLevel(level || "");
         setDuration(duration || "");
-        setImage(img );
+        setImage(image );
+        setImageFound(true);
       }
     }, [props.courseToEdit]);
   
    
 function imgHandler(event) {
     const imgFile = event.target.files[0];
+    setImageFound(true);
     const reader = new FileReader();
   
     reader.onload = () => {
@@ -143,11 +146,16 @@ function imgHandler(event) {
         <div className="new-expense__controls">
           <Row>
             <Col md={6} className="my-1">
-              <div className="new-expense__control">
+              <div className="new-expense__control d-flex flex-column">
                 <label>Course Image</label>
-                <input type="file"
-                
+                <input type="file" 
                 onChange={imgHandler} />
+                {img_found &&  <img
+                   src={`data:image/jpeg;base64,${course_img}`}
+                   className="rounded mt-1"
+                  style={{width:"320px"}}
+                 />}
+                
               </div>
             </Col>
             <Col md={6}className="my-1">
