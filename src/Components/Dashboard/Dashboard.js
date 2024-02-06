@@ -1,9 +1,24 @@
 import React from "react";
-import { Table, thead, th, td, tbody, tr } from "reactstrap";
+import {
+  Table,
+  thead,
+  th,
+  td,
+  tbody,
+  tr,
+  Toast,
+  Button,
+  Modal,
+  ModalHeader,
+  ModalBody,
+  ModalFooter,
+} from "reactstrap";
 import CourseForm from "./CourseForm";
 import * as Icon from "react-bootstrap-icons";
 import Footer from "../Footer/Footer";
-import { useState ,useEffect} from "react";
+import { useState, useEffect } from "react";
+import { Toaster, toast } from "react-hot-toast";
+
 import "./Dashboard.css";
 import img1 from "../../assests/images/card-Image1.png";
 import img2 from "../../assests/images/card-Image2.png";
@@ -86,9 +101,10 @@ const Dashboard = () => {
   const [courses, setCourses] = useState([]);
   const [isLoading, setLoding] = useState(false);
   const [isAdding, setIsAdding] = useState(false);
-   const [courseToEdit, setCourseToEdit] = useState(null);
+  const [courseToEdit, setCourseToEdit] = useState(null);
+  const [modal, setModal] = useState(false);
+  const [courseToDelete, setCourseToDelete] = useState(null);
 
- 
   const startAddingHandler = () => {
     setIsAdding(true);
   };
@@ -103,11 +119,16 @@ const Dashboard = () => {
     setIsAdding(false);
   };
 
- //get All Course 
- const fetchCourses = async () => {
+  const toggle = () => setModal(!modal);
+
+  //get All Course
+  const fetchCourses = async () => {
     setLoding(true);
+
     try {
-      const response = await fetch("https://65ba227ab4d53c0665522152.mockapi.io/courses");
+      const response = await fetch(
+        "https://65ba227ab4d53c0665522152.mockapi.io/courses"
+      );
       const data = await response.json();
       const transformedDataCourses = data.map((CourseData) => {
         return {
@@ -120,110 +141,132 @@ const Dashboard = () => {
           image: CourseData.img,
         };
       });
+      toast.success("Successfully getted!");
       setCourses(transformedDataCourses);
     } catch (error) {
-      console.error('Error fetching courses:', error.message);
+      toast.error(error.message);
+      console.error("Error fetching courses:", error.message);
     } finally {
       setLoding(false);
     }
   };
-  
- useEffect(() => {
+
+  useEffect(() => {
     fetchCourses();
-      },[]);
+  }, []);
 
- // add new course
-  async function addCourseHandler(course_obj){
-    try {
-        const response = await fetch('https://65ba227ab4d53c0665522152.mockapi.io/courses', {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json',
-          },
-          body: JSON.stringify(course_obj),
-        });
-  
-        if (response.ok) {
-          console.log('New course added successfully');
-          fetchCourses();
-          // You can handle further actions (e.g., redirect, show a success message)
-        } else {
-          console.error('Failed to add new course');
-        }
-      } catch (error) {
-        console.error('Error:', error);
-      }
-  }
-
- // delete course by id
-
-
- // ...
-
- async function deleteCourseHandler(course_id) {
+  // add new course
+  async function addCourseHandler(course_obj) {
     try {
       const response = await fetch(
-        `https://65ba227ab4d53c0665522152.mockapi.io/courses/${course_id}`,
+        "https://65ba227ab4d53c0665522152.mockapi.io/courses",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(course_obj),
+        }
+      );
+
+      if (response.ok) {
+        toast.success("New course added successfully");
+        console.log("New course added successfully");
+        fetchCourses();
+        // You can handle further actions (e.g., redirect, show a success message)
+      } else {
+        toast.error("Failed to add new course");
+        console.error("Failed to add new course");
+      }
+    } catch (error) {
+      toast.error(error);
+      console.error("Error:", error);
+    }
+  }
+
+  // delete course by id
+
+  // ...
+
+ 
+
+  // Rest of your code...
+
+  async function deleteCourseHandler(course_id) {
+    try {
+      // Open the modal to confirm the deletion
+      setCourseToDelete(course_id);
+      toggle(); // Open the modal
+    } catch (error) {
+      toast.error(error.message);
+      console.error('Error deleting course:', error.message);
+    }
+  }
+
+  async function confirmDeleteCourseHandler() {
+    try {
+      const response = await fetch(
+        `https://65ba227ab4d53c0665522152.mockapi.io/courses/${courseToDelete}`,
         {
           method: 'DELETE',
           headers: {
             'Content-Type': 'application/json',
-            // Add any other headers you may need, such as authorization headers
           },
         }
       );
-  
+
       if (response.ok) {
+        toast.success('Course deleted successfully');
         console.log('Course deleted successfully');
-        // Optionally, you can update your component state or trigger a re-fetch here
-        // I'll assume you want to re-fetch the courses after deletion
         fetchCourses();
       } else {
+        toast.error('Failed to delete course');
         console.error('Failed to delete course');
       }
     } catch (error) {
+      toast.error(error.message);
       console.error('Error deleting course:', error.message);
+    } finally {
+      // Close the modal after deletion
+      toggle();
     }
   }
-  
-  
-// sdit course
-async function editCourseHandler(course_id,course_obj)
-{
+
+  // sdit course
+  async function editCourseHandler(course_id, course_obj) {
     try {
-        const response = await fetch(
-          `https://65ba227ab4d53c0665522152.mockapi.io/courses/${course_id}`,
-          {
-            method: 'PUT', // Use PUT method for updating
-            headers: {
-              'Content-Type': 'application/json',
-            },
-            body: JSON.stringify(course_obj),
-          }
-        );
-  
-        if (response.ok) {
-          console.log('Course updated successfully');
-          // Optionally, you can update your component state or trigger a re-fetch here
-          // I'll assume you want to re-fetch the courses after updating
-          fetchCourses();
-        } else {
-          console.error('Failed to update course');
+      const response = await fetch(
+        `https://65ba227ab4d53c0665522152.mockapi.io/courses/${course_id}`,
+        {
+          method: "PUT", // Use PUT method for updating
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(course_obj),
         }
-      } catch (error) {
-        console.error('Error updating course:', error.message);
+      );
+
+      if (response.ok) {
+        toast.success("Course updated successfully");
+        console.log("Course updated successfully");
+        // Optionally, you can update your component state or trigger a re-fetch here
+        // I'll assume you want to re-fetch the courses after updating
+        fetchCourses();
+      } else {
+        toast.error("Failed to update course");
+        console.error("Failed to update course");
       }
-
-}
-
-
-  
-
+    } catch (error) {
+      toast.error(error.message);
+      console.error("Error updating course:", error.message);
+    }
+  }
 
   return (
     <>
       <div id="dashboard" className="m-3 Form wrapperDashboard">
         <h1 className="text-center protext-bold">Dashboard </h1>
+        <Toaster position="bottom-right" />
         {!isAdding && (
           <div>
             <button
@@ -234,56 +277,89 @@ async function editCourseHandler(course_id,course_obj)
             </button>
           </div>
         )}
-        {isAdding && <CourseForm onCancel={stopAddingHandler} onAddCourse={addCourseHandler} courseToEdit={courseToEdit} onEditCourse={editCourseHandler}/>}
+        {isAdding && (
+          <CourseForm
+            onCancel={stopAddingHandler}
+            onAddCourse={addCourseHandler}
+            courseToEdit={courseToEdit}
+            onEditCourse={editCourseHandler}
+          />
+        )}
 
         {!isLoading && courses.length > 0 && (
-         <Table striped>
-         <thead>
-           <tr>
-             <th>#</th>
-             <th>Img</th>
-             <th>Name</th>
-             <th>Instructor</th>
-             <th>Level</th>
-             <th>Duration</th>
-             <th>Description</th>
-             <th>Actions</th>
-           </tr>
-         </thead>
-         <tbody>
-           {courses.map((course, index) => (
-             <tr key={index}>
-               <td>{index + 1}</td>
-               <td>
-                 <img
-                   src={`data:image/jpeg;base64,${course.image}`}
-                   className="rounded"
-                   style={{ width: "100px", height: "100px" }}
-                 />
-               </td>
-               <td>{course.name}</td>
-               <td>{course.instructor}</td>
-               <td>{course.level}</td>
-               <td>{course.duration}</td>
-               <td>{course.description}</td>
-               <td>
-                 <div className="d-flex">
-                   <button className="nav-link    px-md-3   px-2 mb-5   mt-5 mt-md-0  py-2 me-1"  onClick={() => startEditingHandler(course)}>
-                     <Icon.PencilFill style={{ color: "green" }} />
-                   </button>
-                   <button className="nav-link    px-md-3   px-2 mb-5    mt-5 mt-md-0  py-2" onClick={() => deleteCourseHandler(course.id)}>
-                     <Icon.Trash3 style={{ color: "red" }} />
-                   </button>
-                 </div>
-               </td>
-             </tr>
-           ))}
-         </tbody>
-         </Table>
+          <Table striped>
+            <thead>
+              <tr>
+                <th>#</th>
+                <th>Img</th>
+                <th>Name</th>
+                <th>Instructor</th>
+                <th>Level</th>
+                <th>Duration</th>
+                <th>Description</th>
+                <th>Actions</th>
+              </tr>
+            </thead>
+            <tbody>
+              {courses.map((course, index) => (
+                <tr key={index}>
+                  <td>{index + 1}</td>
+                  <td>
+                    <img
+                      src={`data:image/jpeg;base64,${course.image}`}
+                      className="rounded"
+                      style={{ width: "100px", height: "100px" }}
+                    />
+                  </td>
+                  <td>{course.name}</td>
+                  <td>{course.instructor}</td>
+                  <td>{course.level}</td>
+                  <td>{course.duration}</td>
+                  <td>{course.description}</td>
+                  <td>
+                    <div className="d-flex">
+                      <button
+                        className="nav-link    px-md-3   px-2 mb-5   mt-5 mt-md-0  py-2 me-1"
+                        onClick={() => startEditingHandler(course)}
+                      >
+                        <Icon.PencilFill style={{ color: "green" }} />
+                      </button>
+                      
+                        <button
+                          className="nav-link    px-md-3   px-2 mb-5    mt-5 mt-md-0  py-2"
+                          onClick={() => deleteCourseHandler(course.id)}
+                        >
+                          <Icon.Trash3 style={{ color: "red" }} />
+                        </button>
+                
+                      
+                    </div>
+                  </td>
+                </tr>
+              ))}
+               <Modal isOpen={modal} toggle={toggle}>
+          <ModalHeader toggle={toggle}>Confirm Deletion</ModalHeader>
+          <ModalBody>
+            Are you sure you want to delete this course?
+          </ModalBody>
+          <ModalFooter>
+            <Button color="danger" onClick={confirmDeleteCourseHandler}>
+              Delete
+            </Button>
+            <Button color="secondary" onClick={toggle}>
+              Cancel
+            </Button>
+          </ModalFooter>
+        </Modal>
+            </tbody>
+          </Table>
         )}
-      
-        {isLoading && <div className="text-center m-5 p-5"><h1 className="text-center m-5">Loding.....</h1></div>}
-       
+
+        {isLoading && (
+          <div className="text-center m-5 p-5">
+            <h1 className="text-center m-5">Loding.....</h1>
+          </div>
+        )}
       </div>
       <Footer />
     </>
