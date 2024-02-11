@@ -141,8 +141,9 @@ const Dashboard = () => {
           image: CourseData.img,
         };
       });
-      toast.success("Successfully getted!");
+
       setCourses(transformedDataCourses);
+      toast.success("Successfully fetched courses!");
     } catch (error) {
       toast.error(error.message);
       console.error("Error fetching courses:", error.message);
@@ -153,7 +154,9 @@ const Dashboard = () => {
 
   useEffect(() => {
     fetchCourses();
-  }, []);
+  }, []); 
+
+
 
   // add new course
   async function addCourseHandler(course_obj) {
@@ -172,7 +175,8 @@ const Dashboard = () => {
       if (response.ok) {
         toast.success("New course added successfully");
         console.log("New course added successfully");
-        fetchCourses();
+      
+       fetchCourses();
         // You can handle further actions (e.g., redirect, show a success message)
       } else {
         toast.error("Failed to add new course");
