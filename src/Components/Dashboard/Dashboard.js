@@ -20,12 +20,7 @@ import { useState, useEffect } from "react";
 import { Toaster, toast } from "react-hot-toast";
 
 import "./Dashboard.css";
-import img1 from "../../assests/images/card-Image1.png";
-import img2 from "../../assests/images/card-Image2.png";
-import img3 from "../../assests/images/card-Image3.png";
-import img4 from "../../assests/images/card-Image4.png";
-import img5 from "../../assests/images/card-Image5.png";
-import img6 from "../../assests/images/card-Image6.png";
+
 
 // const courses = [
 //   {
