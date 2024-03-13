@@ -14,13 +14,15 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 const Footer = () => {
   return (
-  
     <footer id="web-footer" className="bg-white mt-5 footer  ">
       <div className="mt-5  pt-5  container-fluid">
         <Row className="justify-content-around">
           <Col md={4} className="mb-3">
             <div className="mb-5 ms-5 text-start">
-             <a href="/"> <img src={logo} alt="logo" /></a> 
+              <a href="/">
+                {" "}
+                <img src={logo} alt="logo" />
+              </a>
             </div>
             <p className="protext  ms-5 text-start">
               <FontAwesomeIcon icon={faEnvelope} className="me-1" />
@@ -102,14 +104,16 @@ const Footer = () => {
             </div>
           </Col>
         </Row>
-        <div className="container text-center protext" style={{color:"#656567 "}}>
-          <hr className="container mb-5" />© 2023 Skillbridge. All rights reserved.
+        <div
+          className="container text-center protext"
+          style={{ color: "#656567 " }}
+        >
+          <hr className="container mb-5" />© 2023 Skillbridge. All rights
+          reserved.
         </div>
       </div>
     </footer>
-    
   );
 };
 
 export default Footer;
-

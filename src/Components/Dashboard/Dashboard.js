@@ -104,6 +104,7 @@ const Dashboard = () => {
   const [courseToEdit, setCourseToEdit] = useState(null);
   const [modal, setModal] = useState(false);
   const [courseToDelete, setCourseToDelete] = useState(null);
+  const [deletedCourseName, setDeletedCourseName] = useState('');
 
   const startAddingHandler = () => {
     setIsAdding(true);
@@ -196,10 +197,11 @@ const Dashboard = () => {
 
   // Rest of your code...
 
-  async function deleteCourseHandler(course_id) {
+  async function deleteCourseHandler(course_id,course_name) {
     try {
       // Open the modal to confirm the deletion
       setCourseToDelete(course_id);
+      setDeletedCourseName(course_name);
       toggle(); // Open the modal
     } catch (error) {
       toast.error(error.message);
@@ -236,7 +238,7 @@ const Dashboard = () => {
     }
   }
 
-  // sdit course
+  // edit course
   async function editCourseHandler(course_id, course_obj) {
     try {
       const response = await fetch(
@@ -331,7 +333,7 @@ const Dashboard = () => {
                       
                         <button
                           className="nav-link    px-md-3   px-2 mb-5    mt-5 mt-md-0  py-2"
-                          onClick={() => deleteCourseHandler(course.id)}
+                          onClick={() =>  deleteCourseHandler(course.id,course.name)}
                         >
                           <Icon.Trash3 style={{ color: "red" }} />
                         </button>
@@ -342,9 +344,9 @@ const Dashboard = () => {
                 </tr>
               ))}
                <Modal isOpen={modal} toggle={toggle}>
-          <ModalHeader toggle={toggle}>Confirm Deletion</ModalHeader>
+          <ModalHeader toggle={toggle}>Confirm {deletedCourseName} course Deletion</ModalHeader>
           <ModalBody>
-            Are you sure you want to delete this course?
+          Are you sure you want to delete {deletedCourseName} course?
           </ModalBody>
           <ModalFooter>
             <Button color="danger" onClick={confirmDeleteCourseHandler}>
